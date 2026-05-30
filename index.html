@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Foresta® – Supply Chain Design Solution | Decision Spot</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --bg: #07090f;
       --bg2: #0d1120;
       --bg3: #0a0f1e;
-      --border: rgba(99,179,237,0.10);
+      --border: rgba(99, 179, 237, 0.10);
       --accent: #5271c0;
       --accent2: #7b96e8;
       --accent3: #9ab4ff;
@@ -18,17 +21,22 @@
       --text-muted: #8a9bbf;
       --text-dim: #4a5878;
       --white: #ffffff;
-      --card-bg: rgba(20,28,46,0.7);
+      --card-bg: rgba(20, 28, 46, 0.7);
       --green: #34d399;
       --teal: #22d3ee;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html, body {
-      width: 100%;
+    html {
+      scroll-behavior: smooth;
       height: 100%;
-      overflow-x: hidden;
     }
 
     body {
@@ -38,160 +46,250 @@
       font-size: 16px;
       font-weight: 500;
       line-height: 1.7;
-      /* Figma fix: allow body to scroll and scale naturally */
-      min-width: 320px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      min-height: 100%;
+      width: 100%;
     }
 
-    /* ===================== HERO ===================== */
+    /* HERO - fully responsive, no overflow */
     .hero {
-      min-height: 100vh;
+      width: 100%;
+      min-height: auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: clamp(40px, 8vw, 80px) clamp(16px, 5vw, 56px);
+      padding: clamp(40px, 8vh, 80px) clamp(16px, 5vw, 56px);
       position: relative;
-      overflow: hidden;
       text-align: center;
       background: #28254F;
+      overflow-x: hidden;
     }
 
     .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 70% 60% at 50% 40%, rgba(82,113,192,0.18) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(123,150,232,0.08) 0%, transparent 60%);
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(82, 113, 192, 0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(123, 150, 232, 0.08) 0%, transparent 60%);
     }
 
+    /* simplified grid background without overflow */
     .hero-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(82,113,192,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(82,113,192,0.04) 1px, transparent 1px);
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(82, 113, 192, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(82, 113, 192, 0.04) 1px, transparent 1px);
       background-size: 56px 56px;
       mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 20%, transparent 80%);
+      pointer-events: none;
     }
 
     #particles-canvas {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      z-index: 0; pointer-events: none;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
     }
 
     .hero-content {
-      position: relative; z-index: 1;
-      max-width: min(820px, 90vw);
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
       width: 100%;
     }
 
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(82,113,192,0.1);
-      border: 1px solid rgba(82,113,192,0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(82, 113, 192, 0.1);
+      border: 1px solid rgba(82, 113, 192, 0.3);
       border-radius: 100px;
       padding: 6px 18px;
-      font-size: clamp(10px, 1.2vw, 11px);
-      font-weight: 700; color: var(--accent2);
-      letter-spacing: 0.1em; text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       margin-bottom: 28px;
     }
+
     .hero-badge::before {
-      content: ''; width: 6px; height: 6px;
-      background: var(--accent); border-radius: 50%;
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
       box-shadow: 0 0 8px var(--accent);
     }
 
     .hero h1 {
-      font-size: clamp(36px, 7vw, 76px);
-      font-weight: 800; line-height: 1.03;
-      letter-spacing: -2.5px; color: var(--white);
+      font-size: clamp(36px, 10vw, 76px);
+      font-weight: 800;
+      line-height: 1.03;
+      letter-spacing: -2.5px;
+      color: var(--white);
       margin-bottom: 10px;
+      word-break: break-word;
     }
-    .hero-reg { font-size: clamp(16px, 2.5vw, 28px); font-weight: 800; color: var(--accent2); vertical-align: super; }
+
+    .hero-reg {
+      font-size: clamp(16px, 4vw, 28px);
+      font-weight: 800;
+      color: var(--accent2);
+      vertical-align: super;
+    }
 
     .hero-tagline {
-      font-size: clamp(14px, 2vw, 22px); font-weight: 700;
+      font-size: clamp(16px, 4vw, 22px);
+      font-weight: 700;
       background: linear-gradient(135deg, #5271c0 0%, #9ab4ff 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; margin-bottom: 8px;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
     }
 
     .hero-badges-row {
-      display: flex; gap: 10px; justify-content: center;
-      margin-bottom: 24px; flex-wrap: wrap;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
     }
+
     .badge-chip {
-      font-size: 12px; font-weight: 700; color: var(--text-dim);
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 6px; padding: 4px 12px; letter-spacing: 0.05em;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-dim);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 6px;
+      padding: 4px 12px;
+      letter-spacing: 0.05em;
     }
 
     .hero-desc {
-      font-size: clamp(14px, 1.8vw, 17px); color: var(--text-muted);
-      max-width: 560px; margin: 0 auto 40px; line-height: 1.75;
+      font-size: clamp(14px, 4vw, 17px);
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
     }
 
     .hero-actions {
-      display: flex; gap: 14px; justify-content: center;
-      align-items: center; flex-wrap: wrap;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     .btn-primary {
-      background: var(--accent); color: #fff;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 700; font-size: 15px;
-      padding: 14px 32px; border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 8px;
       text-decoration: none;
       transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-      box-shadow: 0 0 28px rgba(82,113,192,0.4);
+      box-shadow: 0 0 28px rgba(82, 113, 192, 0.4);
+      display: inline-block;
     }
-    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 0 44px rgba(82,113,192,0.55); }
+
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 0 44px rgba(82, 113, 192, 0.55);
+    }
 
     .btn-ghost {
-      color: var(--text-muted); font-size: 15px; font-weight: 600;
-      text-decoration: none; display: flex; align-items: center; gap: 8px;
-      border: 1px solid rgba(82,113,192,0.3);
-      padding: 14px 28px; border-radius: 8px;
+      color: var(--text-muted);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(82, 113, 192, 0.3);
+      padding: 14px 28px;
+      border-radius: 8px;
       transition: color 0.2s, border-color 0.2s;
     }
-    .btn-ghost:hover { color: var(--white); border-color: var(--accent); }
 
-    /* ===================== SECTIONS ===================== */
-    section { padding: clamp(48px, 8vw, 96px) clamp(16px, 5vw, 56px); }
+    .btn-ghost:hover {
+      color: var(--white);
+      border-color: var(--accent);
+    }
+
+    /* SECTIONS - responsive padding */
+    section {
+      padding: clamp(40px, 8vh, 96px) clamp(16px, 5vw, 56px);
+      width: 100%;
+      overflow-x: hidden;
+    }
 
     .section-label {
-      display: block; font-size: 14px; font-weight: 700;
-      color: #ffffff; margin-bottom: 18px; text-align: left;
+      display: block;
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 18px;
+      text-align: left;
     }
+
     .section-label::before {
-      content: ''; display: inline-block; width: 18px; height: 18px;
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 18px;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z'/%3E%3Cpath d='M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-size: contain;
-      flex-shrink: 0; margin-right: 9px; vertical-align: middle;
+      background-repeat: no-repeat;
+      background-size: contain;
+      flex-shrink: 0;
+      margin-right: 9px;
     }
 
     .section-title {
-      font-size: clamp(28px, 4.5vw, 52px); font-weight: 800;
-      letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px;
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 16px;
     }
+
     .section-title em {
       font-style: normal;
       background: linear-gradient(135deg, #5271c0 0%, #9ab4ff 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
       background-clip: text;
+      color: transparent;
     }
 
     .section-desc {
-      font-size: clamp(14px, 1.8vw, 17px); font-weight: 500;
-      color: var(--text-muted); line-height: 1.75; max-width: 640px;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 640px;
     }
 
     .divider {
-      width: 48px; height: 2px;
+      width: 48px;
+      height: 2px;
       background: linear-gradient(90deg, var(--accent), transparent);
       margin: 20px 0;
     }
 
-    /* ===================== ABOUT ===================== */
+    /* ABOUT */
     .about-section {
       background: var(--bg2);
       border-top: 1px solid var(--border);
@@ -201,811 +299,1033 @@
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: clamp(24px, 5vw, 72px);
+      gap: 72px;
       align-items: center;
       margin-top: 40px;
     }
 
+    @media (max-width: 1000px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
     .about-text p {
-      font-size: clamp(14px, 1.6vw, 17px);
-      color: var(--text-muted); line-height: 1.8; margin-bottom: 16px;
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
     }
 
     .about-visual {
-      border-radius: 16px; overflow: hidden;
+      border-radius: 16px;
+      overflow: hidden;
       border: 1px solid var(--border);
       background: linear-gradient(135deg, #0d1a35, #0a2040);
-      min-height: 220px;
-      display: flex; align-items: center; justify-content: center;
-      padding: 24px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      position: relative;
     }
 
-    /* ===================== SUPPLY CHAIN SVG ===================== */
-    .sc-diagram { width: 100%; display: block; }
+    /* APPS */
+    .apps-section {
+      background: var(--bg);
+    }
 
-    /* ===================== APPS ===================== */
-    .apps-section { background: var(--bg); }
-    .apps-header { text-align: center; margin-bottom: clamp(32px, 5vw, 72px); }
-    .apps-header .divider { margin: 20px auto; }
-    .apps-header .section-desc { margin: 0 auto; }
+    .apps-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .apps-header .divider {
+      margin: 20px auto;
+    }
+
+    .apps-header .section-desc {
+      margin: 0 auto;
+    }
 
     .apps-grid {
-      display: flex; flex-direction: column; gap: 2px;
-      border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
     }
 
     .app-card {
       background: var(--card-bg);
-      padding: clamp(24px, 4vw, 56px);
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(24px, 4vw, 56px);
-      align-items: center; position: relative; overflow: hidden;
+      padding: clamp(24px, 5vw, 56px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
       transition: background 0.3s;
     }
-    .app-card:hover { background: rgba(26,37,64,0.9); }
+
+    @media (max-width: 1000px) {
+      .app-card {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .app-card:nth-child(even) .app-visual {
+        order: 0;
+      }
+    }
+
+    .app-card:hover {
+      background: rgba(26, 37, 64, 0.9);
+    }
+
     .app-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0; transition: opacity 0.3s;
+      opacity: 0;
+      transition: opacity 0.3s;
     }
-    .app-card:hover::before { opacity: 1; }
-    .app-card:nth-child(even) .app-visual { order: -1; }
+
+    .app-card:hover::before {
+      opacity: 1;
+    }
 
     .app-num {
-      font-size: 11px; font-weight: 700; color: var(--accent2);
-      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;
-    }
-    .app-card h3 {
-      font-size: clamp(20px, 2.5vw, 30px); font-weight: 800;
-      color: var(--white); letter-spacing: -0.5px;
-      line-height: 1.2; margin-bottom: 16px;
-    }
-    .app-card > div > p {
-      font-size: clamp(13px, 1.5vw, 16px); font-weight: 500;
-      color: var(--text-muted); line-height: 1.75; margin-bottom: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
-    .app-features { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .app-card h3 {
+      font-size: clamp(24px, 5vw, 30px);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .app-card>div>p {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .app-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
     .app-features li {
-      display: flex; align-items: center; gap: 14px;
-      font-size: 15px; color: var(--text-muted); font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 15px;
+      color: var(--text-muted);
+      font-weight: 500;
+      flex-wrap: wrap;
     }
+
     .feat-icon-circle {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .feat-icon-circle svg { width: 18px; height: 18px; }
+
+    .feat-icon-circle svg {
+      width: 18px;
+      height: 18px;
+    }
 
     .app-visual {
-      border-radius: 14px; overflow: hidden;
+      border-radius: 14px;
+      overflow: hidden;
       border: 1px solid var(--border);
-      min-height: 260px;
-      display: flex; align-items: center; justify-content: center;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .app-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    /* ===================== FEATURES ===================== */
+    .app-visual img {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* FEATURES */
     .features-section {
       background: var(--bg2);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
-    .features-header { text-align: center; margin-bottom: 48px; }
-    .features-header .divider { margin: 20px auto; }
-    .features-header .section-desc { margin: 0 auto; }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .features-header .divider {
+      margin: 20px auto;
+    }
 
     .feat-list {
-      display: flex; flex-direction: column; gap: 2px;
-      border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
     }
+
     .feat-row {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 40px; padding: 28px 40px;
-      background: var(--card-bg); transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 28px 40px;
+      background: var(--card-bg);
+      transition: background 0.3s;
+      flex-wrap: wrap;
     }
-    .feat-row:hover { background: rgba(26,37,64,0.9); }
-    .feat-text { flex: 1; }
-    .feat-text h4 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-    .feat-text p { font-size: 15px; color: var(--text-muted); line-height: 1.65; }
+
+    @media (max-width: 700px) {
+      .feat-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px 24px;
+      }
+      .feat-icon-wrap {
+        width: 56px;
+        height: 56px;
+      }
+    }
+
+    .feat-text {
+      flex: 1;
+    }
+
+    .feat-text h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .feat-text p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
 
     .feat-icon-wrap {
-      width: 72px; height: 72px; flex-shrink: 0;
-      border-radius: 16px; display: flex; align-items: center; justify-content: center;
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .feat-icon-wrap.blue  { background: rgba(59,130,246,0.18); border: 1px solid rgba(59,130,246,0.3); }
-    .feat-icon-wrap.purple{ background: rgba(139,92,246,0.18);  border: 1px solid rgba(139,92,246,0.3); }
-    .feat-icon-wrap.teal  { background: rgba(20,184,166,0.18);  border: 1px solid rgba(20,184,166,0.3); }
-    .feat-icon-wrap.orange{ background: rgba(249,115,22,0.18);  border: 1px solid rgba(249,115,22,0.3); }
-    .feat-icon-wrap.green { background: rgba(34,197,94,0.18);   border: 1px solid rgba(34,197,94,0.3); }
-    .feat-icon-wrap.cyan  { background: rgba(6,182,212,0.18);   border: 1px solid rgba(6,182,212,0.3); }
 
-    /* ===================== SCENARIOS ===================== */
+    .feat-icon-wrap.blue {
+      background: rgba(59, 130, 246, 0.18);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    .feat-icon-wrap.purple {
+      background: rgba(139, 92, 246, 0.18);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+    .feat-icon-wrap.teal {
+      background: rgba(20, 184, 166, 0.18);
+      border: 1px solid rgba(20, 184, 166, 0.3);
+    }
+    .feat-icon-wrap.orange {
+      background: rgba(249, 115, 22, 0.18);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+    }
+    .feat-icon-wrap.green {
+      background: rgba(34, 197, 94, 0.18);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+    .feat-icon-wrap.cyan {
+      background: rgba(6, 182, 212, 0.18);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+
+    /* SCENARIOS */
     .feat-scenarios-section {
-      background: var(--bg); border-top: 1px solid var(--border);
-      padding: clamp(48px, 7vw, 80px) clamp(16px, 5vw, 56px);
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: clamp(40px, 8vh, 80px) clamp(16px, 5vw, 56px);
     }
-    .feat-scenarios-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(24px, 5vw, 64px); align-items: center;
-    }
-    .feat-scenarios-visual {
-      border-radius: 14px; overflow: hidden; border: 1px solid var(--border);
-      min-height: 220px; display: flex; align-items: center; justify-content: center;
-    }
-    .feat-scenarios-visual img { width: 100%; height: auto; display: block; object-fit: cover; }
 
-    /* ===================== INTEGRATIONS ===================== */
+    .feat-scenarios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    @media (max-width: 1000px) {
+      .feat-scenarios-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .feat-scenarios-visual {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feat-scenarios-visual img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* INTEGRATIONS */
     .integrations-section {
-      background: var(--bg3); border-top: 1px solid var(--border);
-      padding: clamp(48px, 7vw, 96px) clamp(16px, 5vw, 56px);
-      display: flex; flex-direction: column; gap: 2px;
+      background: var(--bg3);
+      border-top: 1px solid var(--border);
+      padding: clamp(40px, 8vh, 96px) clamp(16px, 5vw, 56px);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
+
     .integ-row {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 40px; padding: 40px 48px;
-      background: var(--card-bg); border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 40px 48px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0;
       transition: background 0.3s;
+      flex-wrap: wrap;
     }
-    .integ-row:first-child { border-radius: 16px 16px 0 0; }
-    .integ-row:last-child  { border-radius: 0 0 16px 16px; }
-    .integ-row:hover { background: rgba(26,37,64,0.9); }
-    .integ-text { flex: 1; }
-    .integ-title { font-size: 22px; font-weight: 800; color: var(--white); letter-spacing: -0.3px; margin-bottom: 10px; line-height: 1.3; }
-    .integ-desc { font-size: 15px; color: var(--text-muted); line-height: 1.65; margin-bottom: 16px; max-width: 520px; }
+
+    @media (max-width: 1000px) {
+      .integ-row {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px 24px;
+      }
+      .integ-visual {
+        justify-content: flex-start;
+      }
+    }
+
+    .integ-row:first-child {
+      border-radius: 16px 16px 0 0;
+    }
+    .integ-row:last-child {
+      border-radius: 0 0 16px 16px;
+    }
+    .integ-row:hover {
+      background: rgba(26, 37, 64, 0.9);
+    }
+
+    .integ-text {
+      flex: 1;
+    }
+
+    .integ-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .integ-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 16px;
+      max-width: 520px;
+    }
+
     .integ-learn-more {
-      display: inline-block; font-size: 13px; font-weight: 700;
-      color: var(--accent2); border: 1px solid rgba(82,113,192,0.4);
-      border-radius: 6px; padding: 7px 18px; text-decoration: none;
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent2);
+      border: 1px solid rgba(82, 113, 192, 0.4);
+      border-radius: 6px;
+      padding: 7px 18px;
+      text-decoration: none;
       transition: background 0.2s, color 0.2s;
     }
-    .integ-learn-more:hover { background: rgba(82,113,192,0.15); color: var(--white); }
-    .integ-visual { display: flex; align-items: center; justify-content: flex-end; gap: 16px; min-width: 200px; flex-shrink: 0; }
 
-    /* ===================== COMPLIANCE ===================== */
+    .integ-learn-more:hover {
+      background: rgba(82, 113, 192, 0.15);
+      color: var(--white);
+    }
+
+    .integ-visual {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+      min-width: 200px;
+      flex-shrink: 0;
+    }
+
+    /* COMPLIANCE */
     .compliance-section {
-      border-top: 1px solid var(--border); background: var(--bg2);
-      padding: 64px clamp(16px, 5vw, 56px); text-align: center;
+      border-top: 1px solid var(--border);
+      background: var(--bg2);
+      padding: clamp(40px, 8vh, 64px) clamp(16px, 5vw, 56px);
+      text-align: center;
     }
-    .compliance-badges { display: flex; justify-content: center; align-items: center; gap: 32px; flex-wrap: wrap; margin-top: 36px; }
-    .compliance-badge {
-      width: 90px; height: 90px; border-radius: 50%;
-      border: 2px solid rgba(82,113,192,0.3);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 4px; background: rgba(82,113,192,0.06);
-    }
-    .compliance-badge-text { font-size: 9px; font-weight: 700; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
-    .compliance-badge-name { font-size: 13px; font-weight: 800; color: var(--white); }
 
-    /* ===================== TESTIMONIAL ===================== */
+    .compliance-badges {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+    }
+
+    .compliance-badge {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 2px solid rgba(82, 113, 192, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      background: rgba(82, 113, 192, 0.06);
+    }
+
+    /* TESTIMONIAL */
     .testimonial-section {
       background: linear-gradient(160deg, #0b1120 0%, #07090f 100%);
-      border-top: 1px solid var(--border); text-align: center;
-      padding: clamp(48px, 7vw, 96px) clamp(16px, 5vw, 56px);
+      border-top: 1px solid var(--border);
+      text-align: center;
     }
-    .testimonial-inner { max-width: 720px; margin: 0 auto; }
-    .quote-icon { font-size: 80px; line-height: 0.7; color: var(--accent); opacity: 0.3; font-family: Georgia, serif; display: block; margin-bottom: 24px; }
-    .testimonial-text { font-size: clamp(16px, 2vw, 22px); font-weight: 500; color: var(--text); line-height: 1.55; letter-spacing: -0.3px; margin-bottom: 36px; }
-    .testimonial-author { display: flex; align-items: center; justify-content: center; gap: 16px; }
-    .author-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; color: #fff; }
-    .author-info .name { font-weight: 700; font-size: 15px; color: var(--white); }
-    .author-info .role { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
-    .author-info .company { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
-    .testimonial-dots { display: flex; gap: 8px; justify-content: center; margin-top: 28px; }
-    .t-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-dim); cursor: pointer; transition: background 0.2s; }
-    .t-dot.active { background: var(--accent); width: 20px; border-radius: 4px; }
 
-    /* ===================== CLIENTS ===================== */
-    .clients-section { background: var(--bg); border-top: 1px solid var(--border); padding: 72px clamp(16px, 5vw, 56px); }
-    .clients-label { text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 40px; }
-    .logos-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 20px 28px; }
-    .logo-pill { font-weight: 700; font-size: 14px; color: var(--text-dim); letter-spacing: 0.06em; padding: 10px 24px; border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; transition: color 0.2s, border-color 0.2s; }
-    .logo-pill:hover { color: var(--text-muted); border-color: var(--border); }
+    .testimonial-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
 
-    /* ===================== RESULTS ===================== */
-    .results-section { background: var(--bg2); border-top: 1px solid var(--border); padding: 80px clamp(16px, 5vw, 56px); text-align: center; }
-    .results-intro { max-width: 680px; margin: 0 auto 60px; }
-    .results-intro .section-desc { margin: 16px auto 0; }
-    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
-    .result-card { background: var(--card-bg); padding: 48px 36px; transition: background 0.3s; }
-    .result-card:hover { background: rgba(26,37,64,0.9); }
-    .result-num { font-size: clamp(40px, 5vw, 64px); font-weight: 800; letter-spacing: -3px; line-height: 1; margin-bottom: 16px; }
-    .result-num span { color: #ffffff; }
-    .result-desc { font-size: 16px; color: var(--text-muted); line-height: 1.55; border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+    .quote-icon {
+      font-size: 80px;
+      line-height: 0.7;
+      color: var(--accent);
+      opacity: 0.3;
+      font-family: Georgia, serif;
+      display: block;
+      margin-bottom: 24px;
+    }
 
-    /* ===================== CTA ===================== */
-    .cta-section { padding: 100px clamp(16px, 5vw, 56px); text-align: center; position: relative; overflow: hidden; }
-    .cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(82,113,192,0.09) 0%, transparent 70%), var(--bg); }
-    .cta-content { position: relative; z-index: 1; }
-    .cta-section h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: var(--white); letter-spacing: -1.5px; margin-bottom: 20px; line-height: 1.15; }
-    .cta-section p { font-size: 17px; color: var(--text-muted); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
-    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .testimonial-text {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.55;
+      letter-spacing: -0.3px;
+      margin-bottom: 36px;
+    }
 
-    /* ===================== ANIMATIONS ===================== */
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .author-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .testimonial-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    .t-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--text-dim);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .t-dot.active {
+      background: var(--accent);
+      width: 20px;
+      border-radius: 4px;
+    }
+
+    /* CLIENTS */
+    .clients-section {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: clamp(40px, 8vh, 72px) clamp(16px, 5vw, 56px);
+    }
+
+    .clients-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 40px;
+    }
+
+    .logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px 28px;
+    }
+
+    .logo-pill {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+      padding: 10px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    /* RESULTS */
+    .results-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: clamp(40px, 8vh, 80px) clamp(16px, 5vw, 56px);
+      text-align: center;
+    }
+
+    .results-intro {
+      max-width: 680px;
+      margin: 0 auto 60px;
+    }
+
+    .results-intro .section-desc {
+      margin: 16px auto 0;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 800px) {
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .result-card {
+      background: var(--card-bg);
+      padding: 48px 36px;
+      transition: background 0.3s;
+    }
+
+    .result-num {
+      font-size: 64px;
+      font-weight: 800;
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .result-num span {
+      color: #ffffff;
+    }
+
+    .result-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: clamp(40px, 10vh, 100px) clamp(16px, 5vw, 56px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(82, 113, 192, 0.09) 0%, transparent 70%), var(--bg);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(28px, 6vw, 44px);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+
+    .cta-section p {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ANIMATIONS */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-content > * { animation: fadeUp 0.7s ease both; }
-    .hero-badge       { animation-delay: 0.10s; }
-    .hero h1          { animation-delay: 0.20s; }
-    .hero-tagline     { animation-delay: 0.25s; }
-    .hero-badges-row  { animation-delay: 0.30s; }
-    .hero-desc        { animation-delay: 0.35s; }
-    .hero-actions     { animation-delay: 0.45s; }
-
-    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.in-view   { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1   { transition-delay: 0.1s; }
-    .reveal-delay-2   { transition-delay: 0.2s; }
-
-    /* ===================== RESPONSIVE ===================== */
-    @media (max-width: 900px) {
-      .about-grid,
-      .feat-scenarios-grid { grid-template-columns: 1fr; gap: 28px; }
-
-      .app-card { grid-template-columns: 1fr; gap: 24px; }
-      .app-card:nth-child(even) .app-visual { order: 0; }
-
-      .integ-row { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
-      .integ-visual { justify-content: flex-start; min-width: auto; }
-
-      .feat-row { padding: 20px 24px; gap: 20px; }
-      .feat-icon-wrap { width: 56px; height: 56px; }
-      .results-grid { grid-template-columns: 1fr; }
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    @media (max-width: 600px) {
-      .feat-row { flex-direction: column; align-items: flex-start; }
-      .app-visual { min-height: 200px; }
+    .hero-content>* {
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-badge { animation-delay: 0.1s; }
+    .hero h1 { animation-delay: 0.2s; }
+    .hero-tagline { animation-delay: 0.25s; }
+    .hero-badges-row { animation-delay: 0.3s; }
+    .hero-desc { animation-delay: 0.35s; }
+    .hero-actions { animation-delay: 0.45s; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    iframe {
+      display: block;
+      width: 100%;
+      border: none;
     }
   </style>
 </head>
+
 <body>
 
-<!-- =================== HERO =================== -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <canvas id="particles-canvas"></canvas>
-  <div class="hero-content">
-    <div class="hero-badge">Supply Chain Design Platform</div>
-    <h1><span class="brand">Foresta</span><span class="hero-reg">®</span></h1>
-    <div class="hero-tagline">The Most Comprehensive Supply Chain Design Solution</div>
-    <div class="hero-badges-row">
-      <span class="badge-chip">Comprehensive</span>
-      <span class="badge-chip">Easy to Use</span>
-      <span class="badge-chip">Robust</span>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge">Supply Chain Design Platform</div>
+      <h1><span class="brand">Foresta</span><span class="hero-reg">®</span></h1>
+      <div class="hero-tagline">The Most Comprehensive Supply Chain Design Solution</div>
+      <div class="hero-badges-row">
+        <span class="badge-chip">Comprehensive</span>
+        <span class="badge-chip">Easy to Use</span>
+        <span class="badge-chip">Robust</span>
+      </div>
+      <p class="hero-desc">An easy-to-use and comprehensive solution that addresses the pain points in the current
+        supply chain design process — developed by leading practitioners, and built on the most advanced cloud
+        infrastructure and optimization technologies.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">Get a Demo</a>
+        <a href="#applications" class="btn-ghost">Explore Applications <svg width="16" height="16" viewBox="0 0 16 16"
+            fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg></a>
+      </div>
     </div>
-    <p class="hero-desc">An easy-to-use and comprehensive solution that addresses the pain points in the current supply chain design process — developed by leading practitioners, and built on the most advanced cloud infrastructure and optimization technologies.</p>
-    <div class="hero-actions">
-      <a href="#" class="btn-primary">Get a Demo</a>
-      <a href="#applications" class="btn-ghost">Explore Applications
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- =================== ABOUT =================== -->
-<section class="about-section">
-  <div class="section-label reveal">Overview</div>
-  <div class="about-grid">
-    <div class="about-text">
-      <h2 class="section-title reveal">Foresta<sup style="font-size:14px;color:var(--accent2);">®</sup> Supply Chain Design Applications</h2>
+  <section class="about-section">
+    <div class="section-label reveal">Overview</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="section-title reveal">Foresta<sup style="font-size:14px;color:var(--accent2);">®</sup> Supply Chain
+          Design Applications</h2>
+        <div class="divider reveal"></div>
+        <p class="reveal reveal-delay-1">Foresta represents a new era in supply chain design — developed by leading
+          practitioners, and built on the most advanced cloud infrastructure and optimization technologies. With
+          Foresta, you will gain unprecedented speed, flexibility, and scalability to solve complex supply chain
+          problems and achieve operational success.</p>
+        <p class="reveal reveal-delay-2">Whether you're optimizing your network, reducing inventory costs, or
+          streamlining transportation — Foresta gives you the tools to act with confidence.</p>
+      </div>
+      <div class="about-visual reveal reveal-delay-1">
+        <div style="width:100%;padding:40px 24px;">
+          <div
+            style="font-size:13px;font-weight:700;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;text-align:center;margin-bottom:32px;">
+            End to End Supply Chain Design</div>
+          <div
+            style="display:flex;align-items:center;gap:0;justify-content:center;flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:60px;">
+              <div
+                style="width:48px;height:48px;border-radius:10px;background:rgba(82,113,192,0.12);border:1px solid rgba(82,113,192,0.3);display:flex;align-items:center;justify-content:center;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="8" width="18" height="13" rx="2" stroke="#5271c0" stroke-width="1.5" />
+                  <path d="M8 8V6a4 4 0 0 1 8 0v2" stroke="#7b96e8" stroke-width="1.5" />
+                  <circle cx="12" cy="14" r="2" stroke="#5271c0" stroke-width="1.5" />
+                </svg>
+              </div>
+              <span
+                style="font-size:9px;font-weight:700;color:var(--text-dim);text-align:center;text-transform:uppercase;letter-spacing:0.05em;">Suppliers</span>
+            </div>
+            <div
+              style="width:28px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0.6;flex-shrink:0;position:relative;">
+              <div
+                style="position:absolute;right:-4px;top:-4px;border:5px solid transparent;border-left-color:var(--accent2);">
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:60px;">
+              <div
+                style="width:48px;height:48px;border-radius:10px;background:rgba(123,150,232,0.1);border:1px solid rgba(123,150,232,0.25);display:flex;align-items:center;justify-content:center;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 17h18M12 3v10M8 7H4a1 1 0 0 0-1 1v6h18V8a1 1 0 0 0-1-1h-4" stroke="#7b96e8"
+                    stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M5 17v2m14-2v2" stroke="#7b96e8" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </div>
+              <span
+                style="font-size:9px;font-weight:700;color:var(--text-dim);text-align:center;text-transform:uppercase;letter-spacing:0.05em;">Ports</span>
+            </div>
+            <div
+              style="width:28px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0.6;flex-shrink:0;position:relative;">
+              <div
+                style="position:absolute;right:-4px;top:-4px;border:5px solid transparent;border-left-color:var(--accent2);">
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:60px;">
+              <div
+                style="width:48px;height:48px;border-radius:10px;background:rgba(82,113,192,0.12);border:1px solid rgba(82,113,192,0.3);display:flex;align-items:center;justify-content:center;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <rect x="2" y="10" width="20" height="12" rx="1" stroke="#5271c0" stroke-width="1.5" />
+                  <path d="M6 10V7l3-3h6l3 3v3M10 22v-5h4v5" stroke="#5271c0" stroke-width="1.5"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span
+                style="font-size:9px;font-weight:700;color:var(--text-dim);text-align:center;text-transform:uppercase;letter-spacing:0.05em;">Plants</span>
+            </div>
+            <div
+              style="width:28px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0.6;flex-shrink:0;position:relative;">
+              <div
+                style="position:absolute;right:-4px;top:-4px;border:5px solid transparent;border-left-color:var(--accent2);">
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:72px;">
+              <div
+                style="width:48px;height:48px;border-radius:10px;background:rgba(123,150,232,0.1);border:1px solid rgba(123,150,232,0.25);display:flex;align-items:center;justify-content:center;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 9l9-6 9 6v12H3V9z" stroke="#7b96e8" stroke-width="1.5" stroke-linejoin="round" />
+                  <rect x="9" y="14" width="6" height="7" stroke="#7b96e8" stroke-width="1.5" />
+                </svg>
+              </div>
+              <span
+                style="font-size:9px;font-weight:700;color:var(--text-dim);text-align:center;text-transform:uppercase;letter-spacing:0.05em;">Warehouses
+                &amp; Fulfillment Centers</span>
+            </div>
+            <div
+              style="width:28px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0.6;flex-shrink:0;position:relative;">
+              <div
+                style="position:absolute;right:-4px;top:-4px;border:5px solid transparent;border-left-color:var(--accent2);">
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:60px;">
+              <div
+                style="width:48px;height:48px;border-radius:10px;background:rgba(82,113,192,0.12);border:1px solid rgba(82,113,192,0.3);display:flex;align-items:center;justify-content:center;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <circle cx="9" cy="7" r="3" stroke="#5271c0" stroke-width="1.5" />
+                  <circle cx="16" cy="8" r="2.5" stroke="#7b96e8" stroke-width="1.5" />
+                  <path d="M3 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#5271c0" stroke-width="1.5"
+                    stroke-linecap="round" />
+                  <path d="M16 12c2.21 0 4 1.79 4 4" stroke="#7b96e8" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </div>
+              <span
+                style="font-size:9px;font-weight:700;color:var(--text-dim);text-align:center;text-transform:uppercase;letter-spacing:0.05em;">(D2C,
+                Stores, Consumers)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section class="apps-section" id="applications">
+    <div class="apps-header">
+      <div class="section-label reveal" style="margin-bottom:18px;display:block;text-align:center;">Applications</div>
+      <h2 class="section-title reveal">Powerful <em>Optimization</em> Tools</h2>
       <div class="divider reveal"></div>
-      <p class="reveal reveal-delay-1">Foresta represents a new era in supply chain design — developed by leading practitioners, and built on the most advanced cloud infrastructure and optimization technologies. With Foresta, you will gain unprecedented speed, flexibility, and scalability to solve complex supply chain problems and achieve operational success.</p>
-      <p class="reveal reveal-delay-2">Whether you're optimizing your network, reducing inventory costs, or streamlining transportation — Foresta gives you the tools to act with confidence.</p>
+      <p class="section-desc reveal reveal-delay-1">Four purpose-built applications that tackle every dimension of your
+        supply chain design — from network strategy to last-mile delivery.</p>
     </div>
 
-    <!-- ===== SUPPLY CHAIN DIAGRAM (SVG) ===== -->
-    <div class="about-visual reveal reveal-delay-1">
-      <svg class="sc-diagram" viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-            <path d="M1 1L9 5L1 9" fill="none" stroke="#5271c0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </marker>
-          <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-            <path d="M1 1L9 5L1 9" fill="none" stroke="#4a5878" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </marker>
-        </defs>
+    <div class="apps-grid">
 
-        <!-- Title -->
-        <text x="280" y="16" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="700" fill="#4a5878" letter-spacing="0.1em">END TO END SUPPLY CHAIN DESIGN</text>
+      <!-- 01 Supply Chain Network Optimizer -->
+      <div class="app-card reveal">
+        <div>
+          <div class="app-num">01 — Network</div>
+          <h3>Supply Chain Network Optimizer</h3>
+          <ul class="app-features">
+            <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.35-4.35" stroke-linecap="round" /></svg></div>Perform greenfield analysis</li>
+            <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M9 3v18M3 9h6M3 15h6" stroke-linecap="round" /></svg></div>Evaluate facility open/close/expansion decisions</li>
+            <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round" /></svg></div>Evaluate tariffs and duties in sourcing decisions</li>
+            <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" /></svg></div>Optimize product flow and mode mix</li>
+            <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linejoin="round" /></svg></div>Evaluate risk</li>
+          </ul>
+        </div>
+        <div class="app-visual">
+          <img src="https://www.image2url.com/r2/default/images/1780124641250-33486902-a512-405e-bf76-0832e2acace5.png"
+            alt="Supply Chain Network Optimizer dashboard">
+        </div>
+      </div>
 
-        <!-- ── NODE 1: SUPPLIERS ── -->
-        <!-- Factory body -->
-        <rect x="18" y="52" width="52" height="40" rx="3" fill="#1D9E75"/>
-        <!-- Chimneys -->
-        <rect x="22" y="38" width="7" height="20" rx="2" fill="#0F6E56"/>
-        <rect x="33" y="34" width="7" height="24" rx="2" fill="#0F6E56"/>
-        <rect x="44" y="41" width="7" height="17" rx="2" fill="#0F6E56"/>
-        <!-- Windows -->
-        <rect x="22" y="60" width="9" height="8" rx="1" fill="rgba(255,255,255,0.5)"/>
-        <rect x="35" y="60" width="9" height="8" rx="1" fill="rgba(255,255,255,0.5)"/>
-        <rect x="48" y="60" width="9" height="8" rx="1" fill="rgba(255,255,255,0.5)"/>
-        <!-- Label -->
-        <text x="44" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600" fill="#8a9bbf">Suppliers</text>
+      <!-- 02 Multi-Echelon Inventory Optimizer -->
+      <div class="app-card reveal reveal-delay-1">
+        <div>
+          <div class="app-num">02 — Inventory</div>
+          <h3>Multi-Echelon Inventory Optimizer</h3>
+          <ul class="app-features">
+            <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" stroke-linecap="round" /></svg></div>Optimize your inventory</li>
+            <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><circle cx="12" cy="12" r="3" /><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" /></svg></div>Evaluate working capital impact</li>
+            <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M12 20V10M18 20V4M6 20v-4" stroke-linecap="round" stroke-linejoin="round" /></svg></div>Balance cost and service</li>
+          </ul>
+        </div>
+        <div class="app-visual">
+          <img src="https://www.image2url.com/r2/default/images/1780124672165-bc0ff952-6d9a-4a52-8d60-64eebdb6a20e.png"
+            alt="Multi-Echelon Inventory Optimizer dashboard">
+        </div>
+      </div>
 
-        <!-- Truck 1 (between Suppliers → Ports) -->
-        <g transform="translate(83,54)">
-          <rect x="0" y="5" width="22" height="11" rx="2" fill="#4a5878" opacity="0.55"/>
-          <rect x="15" y="2" width="9" height="9" rx="1" fill="#4a5878" opacity="0.45"/>
-          <circle cx="5"  cy="17" r="3" fill="#4a5878" opacity="0.55"/>
-          <circle cx="18" cy="17" r="3" fill="#4a5878" opacity="0.55"/>
-        </g>
-        <!-- Arrow 1 -->
-        <line x1="72" y1="73" x2="118" y2="73" stroke="#5271c0" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr)" opacity="0.7"/>
+      <!-- 03 Transportation Optimizer -->
+      <div class="app-card reveal">
+        <div>
+          <div class="app-num">03 — Transportation</div>
+          <h3>Transportation Optimizer</h3>
+          <ul class="app-features">
+            <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><circle cx="5" cy="18" r="2" /><circle cx="19" cy="18" r="2" /><path d="M2 18H1V6l4-4h10l4 4h2v12h-1M5 16H4V7h14v9h-1" stroke-linecap="round" stroke-linejoin="round" /></svg></div>Optimize delivery routes</li>
+            <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 3H8" stroke-linecap="round" /><path d="M12 11v4M10 13h4" stroke-linecap="round" /></svg></div>Improve Utilization</li>
+            <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" stroke-linecap="round" /></svg></div>Create pool/sailing schedule</li>
+            <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M3 9l9-6 9 6v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke-linejoin="round" /><path d="M9 22V12h6v10" stroke-linecap="round" /></svg></div>Optimize direct store delivery</li>
+            <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /></svg></div>Evaluate cross-docks, mode selection</li>
+          </ul>
+        </div>
+        <div class="app-visual">
+          <img src="https://www.image2url.com/r2/default/images/1780124707698-090b3b5a-01cc-4abb-9a6d-3905b1d00ebd.png"
+            alt="Transportation Optimizer dashboard">
+        </div>
+      </div>
 
-        <!-- ── NODE 2: PORTS (left crane) ── -->
-        <g transform="translate(118,44)">
-          <!-- Crane mast -->
-          <line x1="20" y1="6" x2="20" y2="44" stroke="#3B8BD4" stroke-width="3" stroke-linecap="round"/>
-          <!-- Crane boom -->
-          <line x1="20" y1="9" x2="46" y2="22" stroke="#3B8BD4" stroke-width="2" stroke-linecap="round"/>
-          <!-- Hook line -->
-          <line x1="34" y1="22" x2="34" y2="36" stroke="#3B8BD4" stroke-width="1.5" stroke-dasharray="2 2" stroke-linecap="round"/>
-          <!-- Water / dock base -->
-          <rect x="4" y="44" width="36" height="9" rx="3" fill="#3B8BD4" opacity="0.18"/>
-          <path d="M4 48 Q12 44 20 48 Q28 52 36 48" fill="none" stroke="#3B8BD4" stroke-width="1" opacity="0.5"/>
-        </g>
+      <!-- 04 Foresta Data Utilities -->
+      <div class="app-card reveal reveal-delay-1">
+        <div>
+          <div class="app-num">04 — Utilities</div>
+          <h3>Foresta Data Utilities</h3>
+          <p>With a growing list of AI-driven utility applications and data APIs, Foresta helps customers gain insights
+            from their data, bridge data gaps, make informed assumptions, and leverage external data sources to improve
+            decision accuracy.</p>
+        </div>
+        <div class="app-visual">
+          <img src="https://www.image2url.com/r2/default/images/1780124734529-c19c880a-dd43-41a3-bfe9-31b0c9ad8fe3.png"
+            alt="Foresta Data Utilities dashboard">
+        </div>
+      </div>
 
-        <!-- Ship (between the two cranes) -->
-        <g transform="translate(172,54)">
-          <rect x="0" y="5" width="26" height="10" rx="2" fill="#4a5878" opacity="0.5"/>
-          <rect x="7" y="0" width="12" height="8" rx="1" fill="#4a5878" opacity="0.4"/>
-          <path d="M0 15 Q13 19 26 15" fill="none" stroke="#4a5878" stroke-width="1" opacity="0.5"/>
-        </g>
-        <!-- Arrow 2 -->
-        <line x1="162" y1="73" x2="208" y2="73" stroke="#5271c0" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr)" opacity="0.7"/>
-        <!-- Ports label -->
-        <text x="140" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600" fill="#8a9bbf">Ports</text>
-
-        <!-- ── NODE 2b: PORTS (right crane) ── -->
-        <g transform="translate(208,44)">
-          <line x1="20" y1="6" x2="20" y2="44" stroke="#3B8BD4" stroke-width="3" stroke-linecap="round"/>
-          <line x1="20" y1="9" x2="46" y2="22" stroke="#3B8BD4" stroke-width="2" stroke-linecap="round"/>
-          <line x1="34" y1="22" x2="34" y2="36" stroke="#3B8BD4" stroke-width="1.5" stroke-dasharray="2 2" stroke-linecap="round"/>
-          <rect x="4" y="44" width="36" height="9" rx="3" fill="#3B8BD4" opacity="0.18"/>
-          <path d="M4 48 Q12 44 20 48 Q28 52 36 48" fill="none" stroke="#3B8BD4" stroke-width="1" opacity="0.5"/>
-        </g>
-
-        <!-- Truck 2 (between Ports → Plants) -->
-        <g transform="translate(263,54)">
-          <rect x="0" y="5" width="22" height="11" rx="2" fill="#4a5878" opacity="0.55"/>
-          <rect x="15" y="2" width="9" height="9" rx="1" fill="#4a5878" opacity="0.45"/>
-          <circle cx="5"  cy="17" r="3" fill="#4a5878" opacity="0.55"/>
-          <circle cx="18" cy="17" r="3" fill="#4a5878" opacity="0.55"/>
-        </g>
-        <!-- Arrow 3 -->
-        <line x1="252" y1="73" x2="300" y2="73" stroke="#5271c0" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr)" opacity="0.7"/>
-
-        <!-- ── NODE 3: PLANTS ── -->
-        <rect x="300" y="52" width="52" height="40" rx="3" fill="#1D9E75"/>
-        <rect x="304" y="38" width="7" height="20" rx="2" fill="#0F6E56"/>
-        <rect x="315" y="34" width="7" height="24" rx="2" fill="#0F6E56"/>
-        <rect x="326" y="41" width="7" height="17" rx="2" fill="#0F6E56"/>
-        <rect x="304" y="60" width="9" height="8" rx="1" fill="rgba(255,255,255,0.5)"/>
-        <rect x="317" y="60" width="9" height="8" rx="1" fill="rgba(255,255,255,0.5)"/>
-        <rect x="330" y="60" width="9" height="8" rx="1" fill="rgba(255,255,255,0.5)"/>
-        <text x="326" y="110" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600" fill="#8a9bbf">Plants</text>
-
-        <!-- Truck 3 (between Plants → Warehouse) -->
-        <g transform="translate(362,54)">
-          <rect x="0" y="5" width="22" height="11" rx="2" fill="#4a5878" opacity="0.55"/>
-          <rect x="15" y="2" width="9" height="9" rx="1" fill="#4a5878" opacity="0.45"/>
-          <circle cx="5"  cy="17" r="3" fill="#4a5878" opacity="0.55"/>
-          <circle cx="18" cy="17" r="3" fill="#4a5878" opacity="0.55"/>
-        </g>
-        <!-- Arrow 4 -->
-        <line x1="354" y1="73" x2="398" y2="73" stroke="#5271c0" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr)" opacity="0.7"/>
-
-        <!-- ── DASHED BOX (last-mile group) ── -->
-        <rect x="396" y="30" width="154" height="82" rx="8" fill="none" stroke="#4a5878" stroke-width="1" stroke-dasharray="6 4" opacity="0.6"/>
-        <!-- Truck above dashed box -->
-        <g transform="translate(432,14)">
-          <rect x="0" y="4" width="20" height="10" rx="2" fill="#4a5878" opacity="0.5"/>
-          <rect x="13" y="1" width="8" height="8" rx="1" fill="#4a5878" opacity="0.4"/>
-          <circle cx="4"  cy="15" r="2.5" fill="#4a5878" opacity="0.5"/>
-          <circle cx="16" cy="15" r="2.5" fill="#4a5878" opacity="0.5"/>
-        </g>
-        <!-- Arrow down into box -->
-        <line x1="441" y1="28" x2="441" y2="32" stroke="#4a5878" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arr2)" opacity="0.5"/>
-
-        <!-- ── NODE 4: WAREHOUSE ── -->
-        <!-- Building -->
-        <rect x="400" y="52" width="50" height="36" rx="3" fill="#1D9E75"/>
-        <!-- Roof -->
-        <polygon points="425,38 400,54 450,54" fill="#0F6E56"/>
-        <!-- Door -->
-        <rect x="415" y="64" width="16" height="24" rx="2" fill="rgba(255,255,255,0.15)"/>
-        <!-- Windows -->
-        <rect x="404" y="58" width="8" height="6" rx="1" fill="rgba(255,255,255,0.5)"/>
-        <rect x="438" y="58" width="8" height="6" rx="1" fill="rgba(255,255,255,0.5)"/>
-
-        <!-- Inner arrow -->
-        <line x1="453" y1="73" x2="490" y2="73" stroke="#4a5878" stroke-width="1.5" marker-end="url(#arr2)" opacity="0.7"/>
-        <!-- Truck above inner arrow -->
-        <g transform="translate(456,54)">
-          <rect x="0" y="5" width="22" height="11" rx="2" fill="#4a5878" opacity="0.55"/>
-          <rect x="15" y="2" width="9" height="9" rx="1" fill="#4a5878" opacity="0.45"/>
-          <circle cx="5"  cy="17" r="3" fill="#4a5878" opacity="0.55"/>
-          <circle cx="18" cy="17" r="3" fill="#4a5878" opacity="0.55"/>
-        </g>
-
-        <!-- Warehouse label -->
-        <text x="425" y="112" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="600" fill="#8a9bbf">Warehouses &amp;</text>
-        <text x="425" y="124" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="600" fill="#8a9bbf">Fulfillment Centers</text>
-
-        <!-- ── NODE 5: CUSTOMER (person + store stacked) ── -->
-        <!-- Person head -->
-        <circle cx="517" cy="50" r="11" fill="#1D9E75"/>
-        <!-- Person body -->
-        <path d="M502 75 Q517 63 532 75" fill="#1D9E75"/>
-        <!-- Store below -->
-        <rect x="503" y="76" width="28" height="24" rx="3" fill="#0F6E56"/>
-        <rect x="505" y="80" width="8" height="6" rx="1" fill="rgba(255,255,255,0.5)"/>
-        <rect x="517" y="80" width="8" height="6" rx="1" fill="rgba(255,255,255,0.5)"/>
-        <rect x="505" y="90" width="8" height="6" rx="1" fill="rgba(255,255,255,0.5)"/>
-        <rect x="517" y="90" width="8" height="6" rx="1" fill="rgba(255,255,255,0.5)"/>
-
-        <!-- Customer label -->
-        <text x="517" y="114" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="600" fill="#8a9bbf">Customers</text>
-        <text x="517" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="600" fill="#8a9bbf">(DCs, Stores,</text>
-        <text x="517" y="138" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="9" font-weight="600" fill="#8a9bbf">Consumers)</text>
-
-        <!-- Learn More button -->
-        <rect x="200" y="152" width="160" height="36" rx="7" fill="#1a2d5a"/>
-        <rect x="200" y="152" width="160" height="36" rx="7" fill="none" stroke="#3a5ba8" stroke-width="1"/>
-        <text x="280" y="174" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="12" font-weight="700" fill="#ffffff">Learn more</text>
-      </svg>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- =================== APPLICATIONS =================== -->
-<section class="apps-section" id="applications">
-  <div class="apps-header">
-    <div class="section-label reveal" style="margin-bottom:18px;display:block;text-align:center;">Applications</div>
-    <h2 class="section-title reveal">Powerful <em>Optimization</em> Tools</h2>
-    <div class="divider reveal"></div>
-    <p class="section-desc reveal reveal-delay-1">Four purpose-built applications that tackle every dimension of your supply chain design — from network strategy to last-mile delivery.</p>
-  </div>
+  <!-- FEATURES -->
+  <section class="features-section" id="features">
+    <div class="features-header">
+      <h2 class="section-title reveal" style="text-align:center;">Key Features of <em>Foresta</em></h2>
+      <p class="section-desc reveal reveal-delay-1" style="margin:0 auto;text-align:center;">An easy-to-use and
+        comprehensive solution that addresses the pain points in the current supply chain design process.</p>
+    </div>
+    <div class="feat-list">
+      <div class="feat-row reveal"><div class="feat-text"><h4>Scenario &amp; Sensitivity Analysis</h4><p>Understand which levers drive the most impact across your network with powerful scenario and sensitivity analysis tools.</p></div><div class="feat-icon-wrap blue"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="#3b82f6" stroke-width="1.5"/><polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="#60a5fa" stroke-width="1.5"/><line x1="12" y1="22.08" x2="12" y2="12" stroke="#60a5fa" stroke-width="1.5"/></svg></div></div>
+      <div class="feat-row reveal"><div class="feat-text"><h4>Advanced Optimization Engine</h4><p>Powered by state-of-the-art mixed-integer programming and heuristic solvers for the most complex supply chain problems.</p></div><div class="feat-icon-wrap purple"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="#8b5cf6" stroke-width="1.5"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="#a78bfa" stroke-width="1.5"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="#a78bfa" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="#8b5cf6" stroke-width="1.5"/></svg></div></div>
+      <div class="feat-row reveal"><div class="feat-text"><h4>Real-Time Collaboration</h4><p>Work together with your team on the same models, share scenarios and results instantly across your organization.</p></div><div class="feat-icon-wrap teal"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#14b8a6" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="#2dd4bf" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      <div class="feat-row reveal"><div class="feat-text"><h4>Demand Planning &amp; Forecasting</h4><p>Integrate AI-driven demand signals directly into your network models for more accurate and responsive planning.</p></div><div class="feat-icon-wrap orange"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="#f97316" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="feat-row reveal"><div class="feat-text"><h4>Information Security Compliant</h4><p>Enterprise-grade security with end-to-end encryption, strict access controls, SOC 2 Type II and ISO 27001 compliance.</p></div><div class="feat-icon-wrap green"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#22c55e" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="feat-row reveal"><div class="feat-text"><h4>AI-Powered Insights</h4><p>React to market changes with confidence using probabilistic forecasts, live data integration, and intelligent recommendations.</p></div><div class="feat-icon-wrap cyan"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5" r="2" stroke="#06b6d4" stroke-width="1.5"/><circle cx="5" cy="19" r="2" stroke="#22d3ee" stroke-width="1.5"/><circle cx="19" cy="19" r="2" stroke="#22d3ee" stroke-width="1.5"/><line x1="12" y1="7" x2="5" y2="17" stroke="#06b6d4" stroke-width="1.5"/><line x1="12" y1="7" x2="19" y2="17" stroke="#22d3ee" stroke-width="1.5"/><line x1="5" y1="19" x2="19" y2="19" stroke="#06b6d4" stroke-width="1" stroke-dasharray="3 2"/></svg></div></div>
+    </div>
+  </section>
 
-  <div class="apps-grid">
-
-    <!-- 01 -->
-    <div class="app-card reveal">
-      <div>
-        <div class="app-num">01 — Network</div>
-        <h3>Supply Chain Network Optimizer</h3>
-        <ul class="app-features">
-          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35" stroke-linecap="round"/></svg></div>Perform greenfield analysis</li>
-          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6M3 15h6" stroke-linecap="round"/></svg></div>Evaluate facility open/close/expansion decisions</li>
-          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Evaluate tariffs and duties in sourcing decisions</li>
-          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Optimize product flow and mode mix</li>
-          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linejoin="round"/></svg></div>Evaluate risk</li>
+  <section class="feat-scenarios-section reveal">
+    <div class="feat-scenarios-grid">
+      <div class="feat-scenarios-text">
+        <h2 class="section-title">Efficiently Manage and Analyze <em>Scenarios</em></h2>
+        <ul class="app-features" style="margin-top:16px;">
+          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Perform scenario management</li>
+          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Build and compare scenarios</li>
+          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Run sensitivity and trade-off analysis</li>
         </ul>
       </div>
-      <div class="app-visual">
-        <img src="https://www.image2url.com/r2/default/images/1780124641250-33486902-a512-405e-bf76-0832e2acace5.png" alt="Supply Chain Network Optimizer dashboard">
+      <div class="feat-scenarios-visual">
+        <img src="https://cdn.imageurlgenerator.com/uploads/48da2c19-3d67-4a8b-916c-c894ec8a642c.png"
+          alt="Scenario management dashboard" loading="lazy">
       </div>
     </div>
+  </section>
 
-    <!-- 02 -->
-    <div class="app-card reveal reveal-delay-1">
-      <div>
-        <div class="app-num">02 — Inventory</div>
-        <h3>Multi-Echelon Inventory Optimizer</h3>
-        <ul class="app-features">
-          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" stroke-linecap="round"/></svg></div>Optimize your inventory</li>
-          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>Evaluate working capital impact</li>
-          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M12 20V10M18 20V4M6 20v-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Balance cost and service</li>
-        </ul>
-      </div>
-      <div class="app-visual">
-        <img src="https://www.image2url.com/r2/default/images/1780124672165-bc0ff952-6d9a-4a52-8d60-64eebdb6a20e.png" alt="Multi-Echelon Inventory Optimizer dashboard">
-      </div>
-    </div>
+  <section class="integrations-section" id="integrations">
+    <div class="integ-row reveal"><div class="integ-text"><h3 class="integ-title">Information Security Compliant</h3><p class="integ-desc">Foresta is a cloud-based SaaS tool that provides maximum flexibility, supported by a strong culture of information security and compliance, including SOC 2 Type II and ISO 27001.</p></div><div class="integ-visual" style="display:flex;align-items:center;justify-content:center;gap:24px;"><div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#1a3a6b,#2a5ba8);border:3px solid #3a6bbf;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;"><span style="font-size:11px;font-weight:800;color:#fff;letter-spacing:0.05em;">SOC</span><span style="font-size:18px;font-weight:900;color:#fff;line-height:1;">2</span><span style="font-size:8px;font-weight:700;color:#9ab4ff;">TYPE II</span></div><div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#b8860b,#daa520);border:3px solid #f0c040;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" fill="white" opacity="0.9"/></svg><span style="font-size:7px;font-weight:800;color:#fff;text-align:center;line-height:1.2;">CERTIFIED</span></div></div></div>
+    <div class="integ-row reveal"><div class="integ-text"><h3 class="integ-title">Integrated with PowerBI and Tableau</h3><p class="integ-desc">Push Foresta results directly into your BI dashboards for executive reporting and live monitoring.</p><a href="#" class="integ-learn-more">Learn more</a></div><div class="integ-visual"><div style="display:flex;align-items:center;gap:10px;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="10" y="2" width="4" height="8" rx="1" fill="#E97627"/><rect x="10" y="14" width="4" height="8" rx="1" fill="#E97627"/><rect x="2" y="10" width="8" height="4" rx="1" fill="#E97627"/><rect x="14" y="10" width="8" height="4" rx="1" fill="#E97627"/><rect x="6" y="6" width="3" height="3" rx="0.5" fill="#E97627" opacity="0.5"/><rect x="15" y="6" width="3" height="3" rx="0.5" fill="#E97627" opacity="0.5"/><rect x="6" y="15" width="3" height="3" rx="0.5" fill="#E97627" opacity="0.5"/><rect x="15" y="15" width="3" height="3" rx="0.5" fill="#E97627" opacity="0.5"/></svg><span style="font-size:22px;font-weight:800;color:#E97627;letter-spacing:-0.5px;">+tableau</span></div></div></div>
+    <div class="integ-row reveal"><div class="integ-text"><h3 class="integ-title">API Integration</h3><p class="integ-desc">Connect Foresta to any system via RESTful API. Automate model runs and embed results into custom workflows.</p></div><div class="integ-visual"><div style="display:flex;align-items:center;gap:8px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 17l6-6-6-6M12 19h8" stroke="#7b96e8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:22px;font-weight:800;color:var(--accent2);letter-spacing:-0.5px;">Foresta<span style="color:var(--accent3);">API</span></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 7l-6 6 6 6M12 5H4" stroke="#7b96e8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div>
+    <div class="integ-row reveal"><div class="integ-text"><h3 class="integ-title">3rd Party Data Source Integration</h3><p class="integ-desc">Ingest freight rates, market indices, and external demand signals from leading data providers.</p><a href="#" class="integ-learn-more">Learn more</a></div><div class="integ-visual" style="flex-direction:column;gap:12px;align-items:flex-start;"><span style="font-size:18px;font-weight:800;color:#e8eef8;letter-spacing:0.05em;">$FREIGHTWAVES</span><span style="font-size:18px;font-weight:800;color:#C9AA7C;letter-spacing:0.05em;">TSMC<sup style="font-size:12px;">3</sup></span></div></div>
+    <div class="integ-row reveal"><div class="integ-text"><h3 class="integ-title">Cloud Agnostic</h3><p class="integ-desc">Deploy on any major cloud provider. Foresta runs seamlessly on Azure, Google Cloud Platform, and AWS with no vendor lock-in.</p></div><div class="integ-visual" style="gap:20px;flex-wrap:wrap;"><div style="display:flex;align-items:center;gap:8px;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M13.5 2L6 14h6l-1 8 9.5-11H15L13.5 2z" fill="#0089d6" opacity="0.9"/></svg><span style="font-size:16px;font-weight:800;color:#0089d6;">Azure</span></div><div style="display:flex;align-items:center;gap:8px;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#4285f4" stroke-width="1.5"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#34a853" stroke-width="1.5" stroke-linecap="round"/><path d="M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8" stroke="#fbbc04" stroke-width="1.5" stroke-linecap="round"/><path d="M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8" stroke="#ea4335" stroke-width="1.5" stroke-linecap="round"/></svg><span style="font-size:13px;font-weight:700;color:#8a9bbf;">Google Cloud</span></div><div style="display:flex;align-items:center;gap:8px;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M6.5 14c-.8 1-1.5 2.5-1 4 .5 1.2 2 2 3.5 2s3-1 4.5-2.5c1.5-1.5 2.5-3.5 2.5-5.5 0-3-2-5-5-5-3.5 0-5.5 2.5-5.5 5.5 0 .5 0 1 .1 1.5" stroke="#ff9900" stroke-width="1.5" stroke-linecap="round"/><path d="M4 18c2 1.5 5 2.5 8 2.5" stroke="#ff9900" stroke-width="1.5" stroke-linecap="round"/></svg><span style="font-size:16px;font-weight:800;color:#ff9900;">AWS</span></div></div></div>
+  </section>
 
-    <!-- 03 -->
-    <div class="app-card reveal">
-      <div>
-        <div class="app-num">03 — Transportation</div>
-        <h3>Transportation Optimizer</h3>
-        <ul class="app-features">
-          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M2 18H1V6l4-4h10l4 4h2v12h-1M5 16H4V7h14v9h-1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Optimize delivery routes</li>
-          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8" stroke-linecap="round"/><path d="M12 11v4M10 13h4" stroke-linecap="round"/></svg></div>Improve Utilization</li>
-          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke-linecap="round"/></svg></div>Create pool/sailing schedule</li>
-          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M3 9l9-6 9 6v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke-linecap="round"/></svg></div>Optimize direct store delivery</li>
-          <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>Evaluate cross-docks, mode selection</li>
-        </ul>
-      </div>
-      <div class="app-visual">
-        <img src="https://www.image2url.com/r2/default/images/1780124707698-090b3b5a-01cc-4abb-9a6d-3905b1d00ebd.png" alt="Transportation Optimizer dashboard">
-      </div>
-    </div>
-
-    <!-- 04 -->
-    <div class="app-card reveal reveal-delay-1">
-      <div>
-        <div class="app-num">04 — Utilities</div>
-        <h3>Foresta Data Utilities</h3>
-        <p>With a growing list of AI-driven utility applications and data APIs, Foresta helps customers gain insights from their data, bridge data gaps, make informed assumptions, and leverage external data sources to improve decision accuracy.</p>
-      </div>
-      <div class="app-visual">
-        <img src="https://www.image2url.com/r2/default/images/1780124734529-c19c880a-dd43-41a3-bfe9-31b0c9ad8fe3.png" alt="Foresta Data Utilities dashboard">
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- =================== FEATURES =================== -->
-<section class="features-section" id="features">
-  <div class="features-header">
-    <h2 class="section-title reveal" style="text-align:center;">Key Features of <em>Foresta</em></h2>
-    <p class="section-desc reveal reveal-delay-1" style="margin:0 auto;text-align:center;">An easy-to-use and comprehensive solution that addresses the pain points in the current supply chain design process.</p>
-  </div>
-  <div class="feat-list">
-    <div class="feat-row reveal">
-      <div class="feat-text"><h4>Scenario &amp; Sensitivity Analysis</h4><p>Understand which levers drive the most impact across your network with powerful scenario and sensitivity analysis tools.</p></div>
-      <div class="feat-icon-wrap blue"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="#3b82f6" stroke-width="1.5"/><polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="#60a5fa" stroke-width="1.5"/><line x1="12" y1="22.08" x2="12" y2="12" stroke="#60a5fa" stroke-width="1.5"/></svg></div>
-    </div>
-    <div class="feat-row reveal">
-      <div class="feat-text"><h4>Advanced Optimization Engine</h4><p>Powered by state-of-the-art mixed-integer programming and heuristic solvers for the most complex supply chain problems.</p></div>
-      <div class="feat-icon-wrap purple"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="#8b5cf6" stroke-width="1.5"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="#a78bfa" stroke-width="1.5"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="#a78bfa" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="#8b5cf6" stroke-width="1.5"/></svg></div>
-    </div>
-    <div class="feat-row reveal">
-      <div class="feat-text"><h4>Real-Time Collaboration</h4><p>Work together with your team on the same models, share scenarios and results instantly across your organization.</p></div>
-      <div class="feat-icon-wrap teal"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#14b8a6" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="#2dd4bf" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-    </div>
-    <div class="feat-row reveal">
-      <div class="feat-text"><h4>Demand Planning &amp; Forecasting</h4><p>Integrate AI-driven demand signals directly into your network models for more accurate and responsive planning.</p></div>
-      <div class="feat-icon-wrap orange"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="#f97316" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-    </div>
-    <div class="feat-row reveal">
-      <div class="feat-text"><h4>Information Security Compliant</h4><p>Enterprise-grade security with end-to-end encryption, strict access controls, SOC 2 Type II and ISO 27001 compliance.</p></div>
-      <div class="feat-icon-wrap green"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#22c55e" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-    </div>
-    <div class="feat-row reveal">
-      <div class="feat-text"><h4>AI-Powered Insights</h4><p>React to market changes with confidence using probabilistic forecasts, live data integration, and intelligent recommendations.</p></div>
-      <div class="feat-icon-wrap cyan"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5" r="2" stroke="#06b6d4" stroke-width="1.5"/><circle cx="5" cy="19" r="2" stroke="#22d3ee" stroke-width="1.5"/><circle cx="19" cy="19" r="2" stroke="#22d3ee" stroke-width="1.5"/><line x1="12" y1="7" x2="5" y2="17" stroke="#06b6d4" stroke-width="1.5"/><line x1="12" y1="7" x2="19" y2="17" stroke="#22d3ee" stroke-width="1.5"/><line x1="5" y1="19" x2="19" y2="19" stroke="#06b6d4" stroke-width="1" stroke-dasharray="3 2"/></svg></div>
-    </div>
-  </div>
-</section>
-
-<!-- =================== SCENARIOS =================== -->
-<section class="feat-scenarios-section reveal">
-  <div class="feat-scenarios-grid">
-    <div class="feat-scenarios-text">
-      <h2 class="section-title">Efficiently Manage and Analyze <em>Scenarios</em></h2>
-      <ul class="app-features" style="margin-top:16px;">
-        <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Perform scenario management</li>
-        <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Build and compare scenarios</li>
-        <li><div class="feat-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#7b96e8" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Run sensitivity and trade-off analysis</li>
-      </ul>
-    </div>
-    <div class="feat-scenarios-visual">
-      <img src="https://cdn.imageurlgenerator.com/uploads/48da2c19-3d67-4a8b-916c-c894ec8a642c.png" alt="Scenario management dashboard" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<!-- =================== INTEGRATIONS =================== -->
-<section class="integrations-section" id="integrations">
-  <div class="integ-row reveal">
-    <div class="integ-text">
-      <h3 class="integ-title">Information Security Compliant</h3>
-      <p class="integ-desc">Foresta is a cloud-based SaaS tool that provides maximum flexibility, supported by a strong culture of information security and compliance, including SOC 2 Type II and ISO 27001.</p>
-    </div>
-    <div class="integ-visual" style="display:flex;align-items:center;justify-content:center;gap:24px;">
-      <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#1a3a6b,#2a5ba8);border:3px solid #3a6bbf;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
-        <span style="font-size:11px;font-weight:800;color:#fff;letter-spacing:0.05em;">SOC</span>
-        <span style="font-size:18px;font-weight:900;color:#fff;line-height:1;">2</span>
-        <span style="font-size:8px;font-weight:700;color:#9ab4ff;">TYPE II</span>
-      </div>
-      <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#b8860b,#daa520);border:3px solid #f0c040;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" fill="white" opacity="0.9"/></svg>
-        <span style="font-size:7px;font-weight:800;color:#fff;text-align:center;line-height:1.2;">CERTIFIED</span>
-      </div>
-    </div>
+  <div class="compliance-section">
+    <div class="section-label reveal" style="margin-bottom:18px;">Trust &amp; Security</div>
+    <h2 class="section-title reveal" style="text-align:center;font-size:28px;">Information Security <em>Compliant</em></h2>
+    <div class="compliance-badges"><div class="compliance-badge reveal"><div class="compliance-badge-name">SOC 2</div><div class="compliance-badge-text">Type II</div></div><div class="compliance-badge reveal reveal-delay-1"><div class="compliance-badge-name">ISO</div><div class="compliance-badge-text">27001</div></div><div class="compliance-badge reveal reveal-delay-2"><div class="compliance-badge-name">GDPR</div><div class="compliance-badge-text">Compliant</div></div><div class="compliance-badge reveal"><div style="font-size:10px;font-weight:800;color:var(--accent2);">99.9%</div><div class="compliance-badge-text">Uptime SLA</div></div></div>
   </div>
 
-  <div class="integ-row reveal">
-    <div class="integ-text">
-      <h3 class="integ-title">Integrated with PowerBI and Tableau</h3>
-      <p class="integ-desc">Push Foresta results directly into your BI dashboards for executive reporting and live monitoring.</p>
-      <a href="#" class="integ-learn-more">Learn more</a>
+  <section class="testimonial-section">
+    <div class="testimonial-inner">
+      <span class="quote-icon">"</span>
+      <p class="testimonial-text reveal">I am very happy with the Decision Spot software; it has made my daily
+        scheduling much easier and faster. The support staff has also been very helpful if any problems come up.</p>
+      <div class="testimonial-author reveal reveal-delay-1"><div class="author-avatar">BC</div><div class="author-info"><div class="name">Bri Celeschi</div><div class="role">Machine Shop Planner</div><div class="company">McWane Ductile</div></div></div>
+      <div class="testimonial-dots"><div class="t-dot active"></div><div class="t-dot"></div><div class="t-dot"></div></div>
     </div>
-    <div class="integ-visual">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="10" y="2" width="4" height="8" rx="1" fill="#E97627"/><rect x="10" y="14" width="4" height="8" rx="1" fill="#E97627"/><rect x="2" y="10" width="8" height="4" rx="1" fill="#E97627"/><rect x="14" y="10" width="8" height="4" rx="1" fill="#E97627"/><rect x="6" y="6" width="3" height="3" rx="0.5" fill="#E97627" opacity="0.5"/><rect x="15" y="6" width="3" height="3" rx="0.5" fill="#E97627" opacity="0.5"/><rect x="6" y="15" width="3" height="3" rx="0.5" fill="#E97627" opacity="0.5"/><rect x="15" y="15" width="3" height="3" rx="0.5" fill="#E97627" opacity="0.5"/></svg>
-        <span style="font-size:22px;font-weight:800;color:#E97627;letter-spacing:-0.5px;">+tableau</span>
-      </div>
-    </div>
+  </section>
+
+  <div class="clients-section">
+    <div class="clients-label reveal">Trusted by leading organizations</div>
+    <div class="logos-row"><span class="logo-pill reveal">UNILEVER</span><span class="logo-pill reveal reveal-delay-1">AEO</span><span class="logo-pill reveal reveal-delay-2">C.H. ROBINSON</span><span class="logo-pill reveal">TEMPUR-SEALY</span><span class="logo-pill reveal reveal-delay-1">MASTERY</span><span class="logo-pill reveal reveal-delay-2">PLEXUS</span><span class="logo-pill reveal">SWIFT</span></div>
   </div>
 
-  <div class="integ-row reveal">
-    <div class="integ-text">
-      <h3 class="integ-title">API Integration</h3>
-      <p class="integ-desc">Connect Foresta to any system via RESTful API. Automate model runs and embed results into custom workflows.</p>
-    </div>
-    <div class="integ-visual">
-      <div style="display:flex;align-items:center;gap:8px;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 17l6-6-6-6M12 19h8" stroke="#7b96e8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span style="font-size:22px;font-weight:800;color:var(--accent2);letter-spacing:-0.5px;">Foresta<span style="color:var(--accent3);">API</span></span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 7l-6 6 6 6M12 5H4" stroke="#7b96e8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-    </div>
-  </div>
+  <section class="results-section" id="results">
+    <div class="results-intro"><div class="section-label reveal" style="margin-bottom:18px;">Impact</div><h2 class="section-title reveal">Client <em>Results</em></h2><div class="divider reveal" style="margin:20px auto;"></div><p class="section-desc reveal reveal-delay-1">At Decision Spot, our core focus lies in delivering measurable and sustainable value to our clients. Our commitment is to ensure that clients maximize their return on investment from our solutions.</p></div>
+    <div class="results-grid"><div class="result-card reveal"><div class="result-num"><span>30%</span></div><div class="result-desc">Increase in an online retailer's profit</div></div><div class="result-card reveal reveal-delay-1"><div class="result-num"><span>15%</span></div><div class="result-desc">Reduction in a CPG company's safety stock</div></div><div class="result-card reveal reveal-delay-2"><div class="result-num"><span>30%</span></div><div class="result-desc">Improvement in a manufacturer's raw material price prediction</div></div></div>
+  </section>
 
-  <div class="integ-row reveal">
-    <div class="integ-text">
-      <h3 class="integ-title">3rd Party Data Source Integration</h3>
-      <p class="integ-desc">Ingest freight rates, market indices, and external demand signals from leading data providers.</p>
-      <a href="#" class="integ-learn-more">Learn more</a>
-    </div>
-    <div class="integ-visual" style="flex-direction:column;gap:12px;align-items:flex-start;">
-      <span style="font-size:18px;font-weight:800;color:#e8eef8;letter-spacing:0.05em;">$FREIGHTWAVES</span>
-      <span style="font-size:18px;font-weight:800;color:#C9AA7C;letter-spacing:0.05em;">TSMC<sup style="font-size:12px;">3</sup></span>
-    </div>
-  </div>
+  <section class="cta-section">
+    <div class="cta-bg"></div>
+    <div class="cta-content"><div class="section-label reveal" style="margin-bottom:18px;">Get Started</div><h2 class="reveal">See the Full Range of<br>What <em style="-webkit-text-fill-color:initial;background:none;color:var(--accent2);">Foresta</em> Offers</h2><p class="reveal reveal-delay-1">Connect with our team and discover how Foresta's comprehensive supply chain design platform can transform your operations.</p><div class="cta-actions reveal reveal-delay-2"><a href="#" class="btn-primary">Read More</a><a href="#" class="btn-ghost">Schedule a Demo <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
+  </section>
 
-  <div class="integ-row reveal">
-    <div class="integ-text">
-      <h3 class="integ-title">Cloud Agnostic</h3>
-      <p class="integ-desc">Deploy on any major cloud provider. Foresta runs seamlessly on Azure, Google Cloud Platform, and AWS with no vendor lock-in.</p>
-    </div>
-    <div class="integ-visual" style="gap:20px;flex-wrap:wrap;">
-      <div style="display:flex;align-items:center;gap:8px;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M13.5 2L6 14h6l-1 8 9.5-11H15L13.5 2z" fill="#0089d6" opacity="0.9"/></svg><span style="font-size:16px;font-weight:800;color:#0089d6;">Azure</span></div>
-      <div style="display:flex;align-items:center;gap:8px;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#4285f4" stroke-width="1.5"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#34a853" stroke-width="1.5" stroke-linecap="round"/><path d="M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8" stroke="#fbbc04" stroke-width="1.5" stroke-linecap="round"/><path d="M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8" stroke="#ea4335" stroke-width="1.5" stroke-linecap="round"/></svg><span style="font-size:13px;font-weight:700;color:#8a9bbf;">Google Cloud</span></div>
-      <div style="display:flex;align-items:center;gap:8px;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M6.5 14c-.8 1-1.5 2.5-1 4 .5 1.2 2 2 3.5 2s3-1 4.5-2.5c1.5-1.5 2.5-3.5 2.5-5.5 0-3-2-5-5-5-3.5 0-5.5 2.5-5.5 5.5 0 .5 0 1 .1 1.5" stroke="#ff9900" stroke-width="1.5" stroke-linecap="round"/><path d="M4 18c2 1.5 5 2.5 8 2.5" stroke="#ff9900" stroke-width="1.5" stroke-linecap="round"/></svg><span style="font-size:16px;font-weight:800;color:#ff9900;">AWS</span></div>
-    </div>
-  </div>
-</section>
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
 
-<!-- =================== COMPLIANCE =================== -->
-<div class="compliance-section">
-  <div class="section-label reveal" style="margin-bottom:18px;">Trust &amp; Security</div>
-  <h2 class="section-title reveal" style="text-align:center;font-size:28px;">Information Security <em>Compliant</em></h2>
-  <div class="compliance-badges">
-    <div class="compliance-badge reveal"><div class="compliance-badge-name">SOC 2</div><div class="compliance-badge-text">Type II</div></div>
-    <div class="compliance-badge reveal reveal-delay-1"><div class="compliance-badge-name">ISO</div><div class="compliance-badge-text">27001</div></div>
-    <div class="compliance-badge reveal reveal-delay-2"><div class="compliance-badge-name">GDPR</div><div class="compliance-badge-text">Compliant</div></div>
-    <div class="compliance-badge reveal"><div style="font-size:10px;font-weight:800;color:var(--accent2);">99.9%</div><div class="compliance-badge-text">Uptime SLA</div></div>
-  </div>
-</div>
-
-<!-- =================== TESTIMONIAL =================== -->
-<section class="testimonial-section">
-  <div class="testimonial-inner">
-    <span class="quote-icon">"</span>
-    <p class="testimonial-text reveal">I am very happy with the Decision Spot software; it has made my daily scheduling much easier and faster. The support staff has also been very helpful if any problems come up.</p>
-    <div class="testimonial-author reveal reveal-delay-1">
-      <div class="author-avatar">BC</div>
-      <div class="author-info">
-        <div class="name">Bri Celeschi</div>
-        <div class="role">Machine Shop Planner</div>
-        <div class="company">McWane Ductile</div>
-      </div>
-    </div>
-    <div class="testimonial-dots">
-      <div class="t-dot active"></div>
-      <div class="t-dot"></div>
-      <div class="t-dot"></div>
-    </div>
-  </div>
-</section>
-
-<!-- =================== CLIENTS =================== -->
-<div class="clients-section">
-  <div class="clients-label reveal">Trusted by leading organizations</div>
-  <div class="logos-row">
-    <span class="logo-pill reveal">UNILEVER</span>
-    <span class="logo-pill reveal reveal-delay-1">AEO</span>
-    <span class="logo-pill reveal reveal-delay-2">C.H. ROBINSON</span>
-    <span class="logo-pill reveal">TEMPUR-SEALY</span>
-    <span class="logo-pill reveal reveal-delay-1">MASTERY</span>
-    <span class="logo-pill reveal reveal-delay-2">PLEXUS</span>
-    <span class="logo-pill reveal">SWIFT</span>
-  </div>
-</div>
-
-<!-- =================== RESULTS =================== -->
-<section class="results-section" id="results">
-  <div class="results-intro">
-    <div class="section-label reveal" style="margin-bottom:18px;">Impact</div>
-    <h2 class="section-title reveal">Client <em>Results</em></h2>
-    <div class="divider reveal" style="margin:20px auto;"></div>
-    <p class="section-desc reveal reveal-delay-1">At Decision Spot, our core focus lies in delivering measurable and sustainable value to our clients. Our commitment is to ensure that clients maximize their return on investment from our solutions.</p>
-  </div>
-  <div class="results-grid">
-    <div class="result-card reveal"><div class="result-num"><span>30%</span></div><div class="result-desc">Increase in an online retailer's profit</div></div>
-    <div class="result-card reveal reveal-delay-1"><div class="result-num"><span>15%</span></div><div class="result-desc">Reduction in a CPG company's safety stock</div></div>
-    <div class="result-card reveal reveal-delay-2"><div class="result-num"><span>30%</span></div><div class="result-desc">Improvement in a manufacturer's raw material price prediction</div></div>
-  </div>
-</section>
-
-<!-- =================== CTA =================== -->
-<section class="cta-section">
-  <div class="cta-bg"></div>
-  <div class="cta-content">
-    <div class="section-label reveal" style="margin-bottom:18px;">Get Started</div>
-    <h2 class="reveal">See the Full Range of<br>What <em style="-webkit-text-fill-color:initial;background:none;color:var(--accent2);">Foresta</em> Offers</h2>
-    <p class="reveal reveal-delay-1">Connect with our team and discover how Foresta's comprehensive supply chain design platform can transform your operations.</p>
-    <div class="cta-actions reveal reveal-delay-2">
-      <a href="#" class="btn-primary">Read More</a>
-      <a href="#" class="btn-ghost">Schedule a Demo
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<script>
-  /* Scroll reveal */
-  const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver(
-    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); }),
-    { threshold: 0.1 }
-  );
-  reveals.forEach(el => io.observe(el));
-
-  /* Particles */
-  (function () {
-    const canvas = document.getElementById('particles-canvas');
-    const ctx = canvas.getContext('2d');
-    let W, H, particles = [], animId;
-    function resize() {
-      const hero = canvas.parentElement;
-      W = canvas.width = hero.offsetWidth;
-      H = canvas.height = hero.offsetHeight;
-    }
-    function random(min, max) { return Math.random() * (max - min) + min; }
-    function createParticle() {
-      return {
-        x: random(0, W), y: random(0, H),
-        r: random(0.5, 2.2),
-        opacity: random(0.15, 0.55),
-        vx: random(-0.18, 0.18), vy: random(-0.22, -0.06),
-        twinkleSpeed: random(0.008, 0.022),
-        twinklePhase: random(0, Math.PI * 2),
-        color: Math.random() > 0.6 ? '154,180,255' : Math.random() > 0.5 ? '123,150,232' : '255,255,255'
-      };
-    }
-    function init() {
-      resize(); particles = [];
-      const count = Math.floor((W * H) / 6000);
-      for (let i = 0; i < count; i++) particles.push(createParticle());
-    }
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      particles.forEach(p => {
-        p.twinklePhase += p.twinkleSpeed;
-        const alpha = p.opacity * (0.5 + 0.5 * Math.sin(p.twinklePhase));
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(' + p.color + ',' + alpha + ')'; ctx.fill();
-        if (p.r > 1.5) {
-          ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(' + p.color + ',' + (alpha * 0.15) + ')'; ctx.fill();
-        }
-        p.x += p.vx; p.y += p.vy;
-        if (p.y < -5) { p.y = H + 5; p.x = random(0, W); }
-        if (p.x < -5) p.x = W + 5;
-        if (p.x > W + 5) p.x = -5;
-      });
-      animId = requestAnimationFrame(draw);
-    }
-    window.addEventListener('resize', () => { cancelAnimationFrame(animId); init(); draw(); });
-    init(); draw();
-  })();
-</script>
+    (function () {
+      const canvas = document.getElementById('particles-canvas');
+      const ctx = canvas.getContext('2d');
+      let W, H, particles = [], animId;
+      function resize() { const hero = canvas.parentElement; W = canvas.width = hero.offsetWidth; H = canvas.height = hero.offsetHeight; }
+      function random(min, max) { return Math.random() * (max - min) + min; }
+      function createParticle() { return { x: random(0, W), y: random(0, H), r: random(0.5, 2.2), opacity: random(0.15, 0.55), vx: random(-0.18, 0.18), vy: random(-0.22, -0.06), twinkleSpeed: random(0.008, 0.022), twinklePhase: random(0, Math.PI * 2), color: Math.random() > 0.6 ? '154,180,255' : Math.random() > 0.5 ? '123,150,232' : '255,255,255' }; }
+      function init() { resize(); particles = []; const count = Math.floor((W * H) / 6000); for (let i = 0; i < count; i++) particles.push(createParticle()); }
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => {
+          p.twinklePhase += p.twinkleSpeed;
+          const alpha = p.opacity * (0.5 + 0.5 * Math.sin(p.twinklePhase));
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = 'rgba(' + p.color + ',' + alpha + ')'; ctx.fill();
+          if (p.r > 1.5) { ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 2.5, 0, Math.PI * 2); ctx.fillStyle = 'rgba(' + p.color + ',' + (alpha * 0.15) + ')'; ctx.fill(); }
+          p.x += p.vx; p.y += p.vy;
+          if (p.y < -5) { p.y = H + 5; p.x = random(0, W); }
+          if (p.x < -5) p.x = W + 5;
+          if (p.x > W + 5) p.x = -5;
+        });
+        animId = requestAnimationFrame(draw);
+      }
+      window.addEventListener('resize', () => { cancelAnimationFrame(animId); init(); draw(); });
+      init(); draw();
+    })();
+  </script>
 </body>
+
 </html>
